@@ -9,7 +9,7 @@ declare module 'power-analysis' {
     effect_type?: 'relative' | 'absolute' | 'effect_size';
     distribution?: 'normal' | 'binomial';
     r_squared?: number;
-    alternative?: 'two_sided' | 'upper_tailed' | 'lower_tailed';
+    alternative?: 'two-sided' | 'upper-tailed' | 'lower-tailed';
     alpha?: number;
     power?: number;
     treat_prop?: number;
