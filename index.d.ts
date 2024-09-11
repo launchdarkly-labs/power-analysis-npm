@@ -7,7 +7,7 @@ declare module 'power-analysis' {
     output?: 'sample_size' | 'effect';
     analysis_type?: 'power' | 'precision';
     effect_type?: 'relative' | 'absolute' | 'effect_size';
-    distribution?: 'normal' | 'binomial';
+    distribution?: 'normal';
     r_squared?: number;
     alternative?: 'two-sided' | 'upper-tailed' | 'lower-tailed';
     alpha?: number;

@@ -67,6 +67,10 @@ function powerAnalysis({
       "Invalid 'output' argument: must be 'sample_size' or 'effect'"
     );
   }
+
+  if (distribution !== 'normal') {
+    throw new Error('Only normal distribution is supported');
+  }
   // Check analysis type argument and update power if precision analysis is chosen
   if (analysis_type == 'precision') {
     power = 0.5;
@@ -97,12 +101,15 @@ function powerAnalysis({
       "Invalid 'effect_type' argument: must be 'relative', 'absolute', or 'effect_size'"
     );
   }
-  // Check range of control and treatment means for binomial distribution
-  if (control_mean < 0 || control_mean > 1) {
-    ("Invalid 'control_mean' argument: must be >= 0 and <= 1 when distribution = 'binomial'");
-  }
-  if (treatment_mean < 0 || treatment_mean > 1) {
-    ("Invalid 'effect' and 'control_mean' arguments: treatment mean must be >= 0 and <= 1 when distribution = 'binomial'");
+
+  if (distribution == 'binomial') {
+    // Check range of control and treatment means for binomial distribution
+    if (control_mean < 0 || control_mean > 1) {
+      ("Invalid 'control_mean' argument: must be >= 0 and <= 1 when distribution = 'binomial'");
+    }
+    if (treatment_mean < 0 || treatment_mean > 1) {
+      ("Invalid 'effect' and 'control_mean' arguments: treatment mean must be >= 0 and <= 1 when distribution = 'binomial'");
+    }
   }
   mean_ratio = treatment_mean / control_mean;
   // Check alternative argument and effect sign and calculate significance divisor
