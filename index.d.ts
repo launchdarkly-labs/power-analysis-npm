@@ -1,4 +1,4 @@
-declare module 'power-analysis' {
+declare module '@launchdarkly/power-analysis' {
   interface PowerAnalysisInputs {
     effect?: number;
     sample_size?: number;
